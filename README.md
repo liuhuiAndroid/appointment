@@ -28,4 +28,32 @@
    git commit -m 'project initialized'
    git push
    ```
+   
+4. 项目代码初始化
 
+   1. 修改viewport这个meta标签，符合移动端
+
+      ```html
+      <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+      ```
+
+   2. 引入reset.css 重置页面样式表，使手机样式统一
+
+      ```js
+      import './assets/styles/reset.css'
+      ```
+
+   3. 引入border.css 解决1px边框问题
+
+      ```js
+      import './assets/styles/border.css'
+      ```
+
+   4. 引入fastClick库 解决某些机型click事件300毫秒延迟问题
+
+      ```
+      npm install fastclick --save
+      import fastClick from 'fastclick'
+      fastClick.attach(document.body)
+      ```
