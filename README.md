@@ -58,9 +58,73 @@
       fastClick.attach(document.body)
       ```
 
+#### stylus：富于表现力、动态的、健壮的CSS
+
+1. 安装stylus
+
+   ```shell
+   npm install stylus --save
+   npm install stylus-loader --save
+   ```
+
+2. stylus的使用
+
+   ```
+   1rem = html font-size = 50px
+   scoped使样式不对其他组件产生影响
+   ```
+
+#### 轮播图
+
+1. 安装第三方轮播插件：vue-awesome-swiper
+
+   ```
+   npm install vue-awesome-swiper@2.6.7 --save
+   npm run start
+   ```
+
+2. 修改main.js
+
+   ```
+   import VueAwesomeSwiper from 'vue-awesome-swiper'
+   import 'swiper/dist/css/swiper.css'
+   Vue.use(VueAwesomeSwiper, /* { default global options } */)
+   
+   这一节主要讲Swiper.vue
+   data: function() {} 在ES6可以简化成 data () {}
+   width: 100% height: 31.25vw  #高度是宽度的百分之31.25
+   
+   样式穿透：
+   .wrapper >>> .swiper-pagination-bullet-active {
+       background: #fff !important;
+   }
+   ```
 
 
 
+#### 使用 axios 发送 ajax 请求
+
+1. [axios Github地址](<https://github.com/axios/axios>)
+
+2. 安装axios
+
+   ```shell
+   npm install axios --save
+   ```
+
+3. 使用axios
+
+   ```
+   import axios from 'axios'
+   借助生命周期钩子发送ajax请求
+   ```
+
+4. mock数据
+
+   ```
+   http://localhost:8080/static/mock/index.json可以访问到本地测试数据
+   webpack-dev-server 工具提供 config/index.js proxyTable配置请求转发，方便开发环境模拟数据
+   ```
 
 #### 项目的联调，测试与发布上线
 
@@ -103,4 +167,10 @@
    ```
    多看vue官方文档、vue-router文档、vuex文档、vue服务器端渲染、awesome-vue插件、vue源码
    ```
+   
+   [vue官方文档](<https://cn.vuejs.org/>)
+   
+   [awesome-vue插件](<https://github.com/vuejs/awesome-vue>)
+   
+   [Vue2.5实战微信读书](https://coding.imooc.com/class/chapter/285.html)
 

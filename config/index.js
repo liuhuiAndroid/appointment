@@ -12,8 +12,8 @@ module.exports = {
     assetsPublicPath: '/',
     // 配置服务器ip地址
     proxyTable: {
-      '/api':{
-        target: 'http://localhost:8080'
+      '/': {
+        target: 'https://api.iyueke.net/api/'
       }
     },
 
