@@ -74,33 +74,97 @@
    scoped使样式不对其他组件产生影响
    ```
 
+#### iconfont的使用
+
+1. [iconfont-阿里巴巴矢量图标库](http://www.iconfont.cn/)
+
+2. iconfont官网选择图标添加至购物车，再添加至项目，下载至本地
+
+3. 挑选iconfont.eot、iconfont.svg、iconfont.ttf、iconfont.woff 放到项目/assets/styles/iconfont目录中，iconfont.css 放入项目/assets/styles中,修改iconfont.css中字体文件路径
+
+4. main.js
+
+   ```js
+   // 引入iconfont
+   import 'styles/iconfont.css'
+   ```
+
+5. 使用iconfont
+
+   ```html
+   <!-- 16进制代码需要在官网查看 -->
+   <span class="iconfont">&#xe624;</> 
+   ```
+
+#### 通用代码
+
+1. 通用变量封装
+
+   1. 新建/assets/styles/varibles.styl
+
+      ```
+      $bgColor = #00bcd4
+      $darkTextColor = #333
+      $headerHeight = .86rem
+      ```
+
+   2. 使用通用变量
+
+      ```javascript
+      // @代表src目录
+      // CSS中引入其他的CSS @前需要加~
+      @import '~@/assets/styles/varibles.styl'
+      
+      // 可以给styles目录起一个别名
+      // 在/build/webpack.base.conf.js中resolve起别名，具体见下面代码
+      // 修改webpack配置项，需要重启服务npm run start才能生效
+      @import '~styles/varibles.styl'
+      ```
+
+      ```js
+      module.exports = {
+        resolve: {
+          extensions: ['.js', '.vue', '.json'],
+          // 别名
+          alias: {
+            'vue$': 'vue/dist/vue.esm.js',
+            '@': resolve('src'),
+            'styles': resolve('src/assets/styles'),
+            'common': resolve('src/common'),
+          }
+        },
+      }
+      ```
+
 #### 轮播图
 
-1. 安装第三方轮播插件：vue-awesome-swiper
+1. [vue-awesome-swiper](<https://github.com/surmon-china/vue-awesome-swiper>)
+
+2. 安装第三方轮播插件：vue-awesome-swiper
 
    ```
    npm install vue-awesome-swiper@2.6.7 --save
    npm run start
    ```
 
-2. 修改main.js
+3. 修改main.js
 
    ```
    import VueAwesomeSwiper from 'vue-awesome-swiper'
    import 'swiper/dist/css/swiper.css'
    Vue.use(VueAwesomeSwiper, /* { default global options } */)
-   
-   这一节主要讲Swiper.vue
-   data: function() {} 在ES6可以简化成 data () {}
-   width: 100% height: 31.25vw  #高度是宽度的百分之31.25
-   
-   样式穿透：
-   .wrapper >>> .swiper-pagination-bullet-active {
-       background: #fff !important;
-   }
    ```
 
+4. 使用vue-awesome-swiper
 
+   ```
+   <swiper :options="swiperOption" v-if="showSwiper">
+       <swiper-slide v-for="item of list" :key="item.id">
+       	<img class="swiper-img" :src="item.imgUrl" />
+       </swiper-slide>
+       <div class="swiper-pagination"  slot="pagination"></div>
+   </swiper>
+   ```
 
 #### 使用 axios 发送 ajax 请求
 
@@ -173,4 +237,8 @@
    [awesome-vue插件](<https://github.com/vuejs/awesome-vue>)
    
    [Vue2.5实战微信读书](https://coding.imooc.com/class/chapter/285.html)
+
+#### 附录：插件
+
+1. Vue.js devtools
 
