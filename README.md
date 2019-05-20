@@ -93,26 +93,14 @@
    ```
    npm run build
    等待提示：Build complete. 会生成dist目录，这就是最终上线代码。
+   
+   如果不想上线在localhost而是想在localhost/project
+   需要修改config/index.js中build部分的内容，修改assetsPublicPath: '/project'
    ```
 
-4. 
+4. 后续学习指南
 
+   ```
+   多看vue官方文档、vue-router文档、vuex文档、vue服务器端渲染、awesome-vue插件、vue源码
+   ```
 
-
-######10-3 Vue项目的联调测试上线 - 
-
-```
-
-
-如果不想上线在localhost而是想在localhost/project
-需要修改config目录下的index.js中build部分的内容，修改assetsPublicPath: '/project'
-```
-
-
-
-######10-5 Vue项目的联调测试上线 - 课程总结与后续学习指南
-
-```
-多看vue官方文档、vue-router文档、vuex文档、vue服务器端渲染、awesome-vue插件、vue源码
-完结撒花。。。
-```
