@@ -48,10 +48,11 @@
 
       ```js
       import './assets/styles/border.css'
-      ```
-
-   4. 引入fastClick库 解决某些机型click事件300毫秒延迟问题
-
+      使用1px边框：class="border-bottom"
+   ```
+   
+4. 引入fastClick库 解决某些机型click事件300毫秒延迟问题
+   
       ```
       npm install fastclick --save
       import fastClick from 'fastclick'
@@ -135,6 +136,25 @@
         },
       }
       ```
+   
+2. 通用CSS封装
+
+   1. 新建/assets/styles/mixins.styl
+
+      ```
+      ellipsis()
+          overflow: hidden
+          white-space: nowrap
+          text-overflow: ellipsis
+      ```
+
+   2. 使用通用CSS
+
+      ```
+      @import '~styles/mixins.styl'
+      
+      ellipsis()
+      ```
 
 #### 轮播图
 
@@ -164,6 +184,12 @@
        </swiper-slide>
        <div class="swiper-pagination"  slot="pagination"></div>
    </swiper>
+   ```
+   
+5. swiper不要由空数组创建，防止轮播图第一次不是显示第一张
+
+   ```
+   v-if="list.length"
    ```
 
 #### 使用 axios 发送 ajax 请求
@@ -241,4 +267,10 @@
 #### 附录：插件
 
 1. Vue.js devtools
+
+   方便调试*vue.js*应用
+
+2. 
+
+   
 
