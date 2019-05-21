@@ -1,12 +1,15 @@
 <template>
   <div>
-    <div class="home">hello world</div>
+    <home-header></home-header>
     <home-swiper :list="swiperList"></home-swiper>
+    <home-course :list="orgList"></home-course>
   </div>
 </template>
 
 <script>
+import HomeHeader from './components/Header'
 import HomeSwiper from './components/Swiper'
+import HomeCourse from './components/Course'
 const axios = require('axios')
 const instance = axios.create({
   baseURL: 'https://api.iyueke.net/api/',
@@ -20,11 +23,14 @@ const instance = axios.create({
 export default {
   name: 'Home',
   components: {
-    HomeSwiper
+    HomeSwiper,
+    HomeHeader,
+    HomeCourse
   },
   data () {
     return {
-      swiperList: []
+      swiperList: [],
+      orgList: []
     }
   },
   methods: {
@@ -37,10 +43,27 @@ export default {
         const data = res.data
         this.swiperList = data
       }
+    },
+    getOrgClass () {
+      // 100001
+      var data = '{"param":"inhQIHwsBX6aukEW3u4+bg\u003d\u003d\n"}'
+      instance({
+        method: 'post',
+        url: 'Discovery/GetOrgClass',
+        data: data
+      }).then(this.getOrgListSucc)
+    },
+    getOrgListSucc (res) {
+      res = res.data
+      if (res.code === '0') {
+        const data = res.data
+        this.orgList = data
+      }
     }
   },
   mounted () {
     this.getPromotionList()
+    this.getOrgClass()
   }
 }
 </script>
