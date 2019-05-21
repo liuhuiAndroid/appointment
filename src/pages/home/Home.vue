@@ -16,7 +16,7 @@ const instance = axios.create({
   timeout: 1000,
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': 'cnSgExPqm2lf81FXpohDPpd3UdLj9Rl+2r/dIPoPngeCoX9ycOsP3xCFg5oM7JIq'
+    'Authorization': 'QjugtwFMqAL2J370x9t0HIt2Vfs7A0zwcx76Cgepp0/2WkgtAbE1E4Yw2GiWxbkV'
   }
 })
 
@@ -45,8 +45,7 @@ export default {
       }
     },
     getOrgClass () {
-      // 100001
-      var data = '{"param":"inhQIHwsBX6aukEW3u4+bg\u003d\u003d\n"}'
+      var data = '{"param":"inhQIHwsBX6aukEW3u4+bg\u003d\u003d"}'
       instance({
         method: 'post',
         url: 'Discovery/GetOrgClass',

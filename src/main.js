@@ -5,6 +5,9 @@ import App from './App'
 import router from './router'
 // 轮播
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+// vant
+import { Tabbar, TabbarItem } from 'vant'
+
 // 引入reset.css 重置页面样式表，使手机样式统一
 import './assets/styles/reset.css'
 // 引入border.css 解决1px边框问题
@@ -13,6 +16,7 @@ import 'swiper/dist/css/swiper.css'
 
 Vue.config.productionTip = false
 Vue.use(VueAwesomeSwiper)
+Vue.use(Tabbar).use(TabbarItem)
 
 /* eslint-disable no-new */
 new Vue({
