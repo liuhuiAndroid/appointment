@@ -2,7 +2,7 @@
     <div class="wrapper">
         <swiper :options="swiperOption" v-if="showSwiper">
             <swiper-slide v-for="item of list" :key="item.ClassID">
-                <img class="swiper-img" :src="item.CourseBanner_img" />
+                <img class="swiper-img" :src="item.CourseBanner_img" @click="handleBannerClick(item.ClassID)"/>
             </swiper-slide>
             <div class="swiper-pagination"  slot="pagination"></div>
         </swiper>
@@ -28,6 +28,11 @@ export default {
   computed: {
     showSwiper () {
       return this.list.length
+    }
+  },
+  methods: {
+    handleBannerClick (id) {
+      this.$router.push('/coursedetail')
     }
   }
 }

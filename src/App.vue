@@ -2,7 +2,7 @@
   <div id="app">
     <router-view/>
     <van-tabbar v-model="active">
-        <van-tabbar-item >
+        <van-tabbar-item to="/">
           <span>首页</span>
           <img
             slot="icon"
@@ -10,7 +10,7 @@
             :src="props.active ? find.active : find.normal"
           >
         </van-tabbar-item>
-        <van-tabbar-item >
+        <van-tabbar-item to="/class">
           <span>课表</span>
           <img
             slot="icon"
@@ -18,7 +18,7 @@
             :src="props.active ? clazz.active : clazz.normal"
           >
         </van-tabbar-item>
-        <van-tabbar-item >
+        <van-tabbar-item to="/study">
           <span>学习</span>
           <img
             slot="icon"
@@ -26,7 +26,7 @@
             :src="props.active ? study.active : study.normal"
           >
         </van-tabbar-item>
-        <van-tabbar-item >
+        <van-tabbar-item to="/user">
           <span>我的</span>
           <img
             slot="icon"
