@@ -48,8 +48,8 @@
 
       ```js
       import './assets/styles/border.css'
-      使用1px边框：class="border-bottom"
-   ```
+      使用1px边框：class="border-bottom"、class="border-topbottom"
+      ```
    
 4. 引入fastClick库 解决某些机型click事件300毫秒延迟问题
    
@@ -215,6 +215,16 @@
    http://localhost:8080/static/mock/index.json可以访问到本地测试数据
    webpack-dev-server 工具提供 config/index.js proxyTable配置请求转发，方便开发环境模拟数据
    ```
+
+#### 简单组件使用
+
+1. 页面跳转
+
+   ```html
+   <router-link to="/city"></router-link> #会对其中的颜色改变，需要重写一下CSS样式
+   ```
+
+2. 
 
 #### 项目的联调，测试与发布上线
 
