@@ -192,6 +192,26 @@
    v-if="list.length"
    ```
 
+#### better-scroll
+
+1. [better-scroll](<https://github.com/ustbhuangyi/better-scroll>)
+
+2. 安装
+
+   ```
+   npm install better-scroll --save
+   ```
+
+3. 使用
+
+   ```
+   import BScroll from 'better-scroll'
+   
+   mounted () {
+     this.scroll = new BScroll(this.$refs.wrapper)
+   }
+   ```
+
 #### 使用 axios 发送 ajax 请求
 
 1. [axios Github地址](<https://github.com/axios/axios>)
@@ -216,15 +236,78 @@
    webpack-dev-server 工具提供 config/index.js proxyTable配置请求转发，方便开发环境模拟数据
    ```
 
+#### Vuex实现数据共享
+
+1. [vuex](https://vuex.vuejs.org/)
+
+2. 安装Vuex
+
+   ```
+   npm install vuex --save # 安装vuex
+   ```
+
+3. 使用Vuex
+
+   ```
+   store/index.js
+   imoort store from './store'
+   this.$store.state.city *# 获取数据*
+   this.$store.dispatch('changeCity',city)
+   查看官网vuex中state actions mutations，理解数据传递
+   组件可以直接调用mutations，省略actions这个步骤：this.changeCity(city)
+   vue router编程式的导航：this.$router.push('/')
+   ```
+
+4. Vuex的高级使用
+
+   ```
+   store下index.js拆分出state.js和 mutations.js几个部分
+   
+   import { mapState } from 'vuex'
+   export default {
+     computed: {
+      ...mapState(['city']) # 把vuex中的属性映射到计算属性中
+     }
+   }
+   这样this.$store.state.city可以写成this.city
+   
+   import { mapMutations } from 'vuex'
+   methods: {
+     ...mapMutations(['changeCity']) 
+   }
+   这样this.$store.commit('changeCity',city)可以改写成：this.changeCity(city)
+   ```
+
+5. localStorage实现本地存储
+
+   ```
+   localStorage.city = city
+   city = localStorage.city || '上海'
+   ```
+
 #### 简单组件使用
 
 1. 页面跳转
 
    ```html
    <router-link to="/city"></router-link> #会对其中的颜色改变，需要重写一下CSS样式
+   
+   <router-link tag="li" to="'/detail/' + item.id"> #会渲染成一个li标签
+   </router-link>
+   动态路由：'/detail/:id'，可以通过this.$route.params.id获取
+   
    ```
 
-2. 
+2. 使用keep-alive优化网页性能
+
+   ```
+   每次路由切换，mounted钩子都会被执行，ajax都会发送请求，性能很低
+   <keep-alive>
+     <router-view/>
+   </keep-alive>
+   城市改变，需要调用ajax请求
+   使用keep-alive，需要借助activated钩子代替mounted钩子，结合lastCity == city解决此问题
+   ```
 
 #### 项目的联调，测试与发布上线
 
