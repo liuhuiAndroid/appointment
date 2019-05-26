@@ -295,7 +295,6 @@
    <router-link tag="li" to="'/detail/' + item.id"> #会渲染成一个li标签
    </router-link>
    动态路由：'/detail/:id'，可以通过this.$route.params.id获取
-   
    ```
 
 2. 使用keep-alive优化网页性能
@@ -307,6 +306,38 @@
    </keep-alive>
    城市改变，需要调用ajax请求
    使用keep-alive，需要借助activated钩子代替mounted钩子，结合lastCity == city解决此问题
+   
+   keep-alive可以不加缓存
+   <keep-alive exclude="Detail">
+     <router-view/>
+   </keep-alive>
+   ```
+   
+3. 全局事件的绑定和解绑
+
+   ```
+   activated () {
+     window.addEventListener('scroll',this.handleScroll)
+   },
+   deactivated () {
+     window.removeEventListener('scroll',this.handleScroll)
+   }
+   ```
+
+4. 递归组件
+
+   ```
+   <div v-if="item.children">
+     <detail-list :list="item.children"></detail-list>
+   </div>
+   ```
+
+5. 解决多个页面滚动会相互影响
+
+   ```
+   scrollBehavior (to, from, savedPosition) { # 每次路由切换后，初始位置x=0,y=0
+     return {x: 0, y: 0}
+   }
    ```
 
 #### 项目的联调，测试与发布上线
